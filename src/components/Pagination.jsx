@@ -19,7 +19,7 @@ export default function Pagination() {
   const endIndex = pageNum * fruitsPerPage;
   const startIndex = endIndex - fruitsPerPage;
   const slicedFruits = fruits.slice(startIndex, endIndex);
-  const numOfPages = fruits.length / fruitsPerPage + 1;
+  const numOfPages = fruits.length / fruitsPerPage;
 
   function handlePageLimitChange(e) {
     setFruitsPerPage(e.target.value);
