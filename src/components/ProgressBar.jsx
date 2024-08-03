@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import MainNavigation from "./MainNavigation";
 
 export default function ProgressBar() {
   const [started, setStarted] = useState(false);
   const [progressValue, setProgressValue] = useState(0);
+  const intervalRef = useRef();
 
   function handleClickStart() {
     setStarted((prev) => !prev);
@@ -15,15 +16,14 @@ export default function ProgressBar() {
   }
 
   useEffect(() => {
-    let timer;
     if (started) {
-      timer = setInterval(() => {
+      intervalRef.current = setInterval(() => {
         setProgressValue((prev) => (prev < 100 ? prev + 1 : prev));
       }, 10);
-    } else clearInterval(timer);
+    }
 
     return () => {
-      clearInterval(timer);
+      clearInterval(intervalRef.current);
     };
   }, [started]);
 
