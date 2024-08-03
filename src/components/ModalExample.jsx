@@ -34,7 +34,7 @@ export default function ModalExample() {
         Contact Form
       </button>
       {contactModalOpen && (
-        <Modal onClose={handleCloseContactForm}>
+        <Modal showModal={contactModalOpen} onClose={handleCloseContactForm}>
           <div className="w-96 h-96">
             <h1 className="m-4">Contact Form</h1>
             <form onSubmit={handleFormSubmit}>
